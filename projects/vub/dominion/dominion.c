@@ -650,14 +650,16 @@ int adventurer_card(int drawntreasure, struct gameState *state, int currentPlaye
     if (state->deckCount[currentPlayer] <1){//if the deck is empty we need to shuffle discard and add to deck
       shuffle(currentPlayer, state);
     }
-    drawCard(currentPlayer, state);
-    int cardDrawn = state->hand[currentPlayer][state->handCount[currentPlayer]-1];//top card of hand is most recently drawn card.
-    if (cardDrawn == copper || cardDrawn == silver || cardDrawn == gold)
-      drawntreasure++;
-    else{
-      temphand[z]=cardDrawn;
-      state->handCount[currentPlayer]--; //this should just remove the top card (the most recently drawn one).
-      z++;
+    else {
+      drawCard(currentPlayer, state);
+      int cardDrawn = state->hand[currentPlayer][state->handCount[currentPlayer]-1];//top card of hand is most recently drawn card.
+      if (cardDrawn == copper || cardDrawn == silver || cardDrawn == gold)
+        drawntreasure++;
+      else{
+        temphand[z]=cardDrawn;
+        state->handCount[currentPlayer]--; //this should just remove the top card (the most recently drawn one).
+        z++;
+      }
     }
   }
   
@@ -679,7 +681,7 @@ int smithy_card(struct gameState *state, int currentPlayer, int handPos) {
   }
   
   //discard card from hand
-  discardCard(handPos, currentPlayer, state, 0);
+  discardCard(state, currentPlayer, handPos, 0);
   return 0;
 }
 
@@ -688,7 +690,7 @@ int village_card(struct gameState *state, int currentPlayer, int handPos) {
   drawCard(currentPlayer, state);
   
   //+2 Actions
-  state->numActions = state->numActions + 2;
+  state->numActions = state->numActions + 3;
   
   //discard played card from hand
   discardCard(handPos, currentPlayer, state, 0);
@@ -710,7 +712,7 @@ int great_hall_card(struct gameState *state, int currentPlayer, int handPos) {
 int mine_card(struct gameState *state, int currentPlayer, int choice1, int choice2, int handPos) {
   int j = state->hand[currentPlayer][choice1];  //store card we will trash
 
-  if (state->hand[currentPlayer][choice1] < copper || state->hand[currentPlayer][choice1] > gold)
+  if (state->hand[currentPlayer][choice1] < copper && state->hand[currentPlayer][choice1] > gold)
   {
     return -1;
   }
