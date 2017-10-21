@@ -17,7 +17,23 @@ char *inputString()
   // generate string of only lowercase chars
   int i;
   for (i = 0; i < 5; i++) {
-    randString[i] = (rand() % 26) + 97;
+    char c;
+    switch(rand() % 5) {
+      case 0:
+        c = 'r';
+        break;
+      case 1:
+        c = 'e';
+        break;
+      case 2:
+        c = 's';
+        break;
+      case 3:
+        c = 't';
+        break;
+    }
+
+    randString[i] = c;
   }
 
   randString[5] = '\0';
