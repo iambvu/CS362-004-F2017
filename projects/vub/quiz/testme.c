@@ -13,27 +13,34 @@ char inputChar()
 char *inputString()
 {
   char *randString = malloc(sizeof(char) * 6);
+  char c;
 
   // generate string of only lowercase chars
   int i;
-  for (i = 0; i < 5; i++) {
-    char c;
-    switch(rand() % 5) {
-      case 0:
-        c = 'r';
-        break;
-      case 1:
-        c = 'e';
-        break;
-      case 2:
-        c = 's';
-        break;
-      case 3:
-        c = 't';
-        break;
+  if (((rand() % 26) + 97) % 2 == 0) {
+    for (i = 0; i < 5; i++) {
+      randString[i] = (rand() % 26) + 97;
     }
+  } else {
+    // to avoid going over 5 min
+    for (i = 0; i < 5; i++) {
+      switch(rand() % 4) {
+        case 0:
+          randString[i] = 'r';
+          break;
+        case 1:
+          randString[i] = 'e';
+          break;
+        case 2:
+          randString[i] = 's';
+          break;
+        case 3:
+          randString[i] = 't';
+          break;
+      }
 
-    randString[i] = c;
+      // randString[i] = c;
+    }
   }
 
   randString[5] = '\0';
