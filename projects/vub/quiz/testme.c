@@ -5,14 +5,22 @@
 
 char inputChar()
 {
-    // TODO: rewrite this function
-    return ' ';
+  // random ascii code for char
+  int r = rand() % 45;
+  return (r < 10) ? r + 32 : (r + 91) - 10;
 }
 
 char *inputString()
 {
-    // TODO: rewrite this function
-    return "";
+  char *randString = malloc(sizeof(char) * 6);
+
+  int i;
+  for (i = 0; i < 5; i++) {
+    randString[i] = (rand() % 26) + 97;
+  }
+
+  randString[5] = '\0';
+  return randString;
 }
 
 void testme()
@@ -31,7 +39,7 @@ void testme()
     if (c == '[' && state == 0) state = 1;
     if (c == '(' && state == 1) state = 2;
     if (c == '{' && state == 2) state = 3;
-    if (c == ' '&& state == 3) state = 4;
+    if (c == ' ' && state == 3) state = 4;
     if (c == 'a' && state == 4) state = 5;
     if (c == 'x' && state == 5) state = 6;
     if (c == '}' && state == 6) state = 7;
