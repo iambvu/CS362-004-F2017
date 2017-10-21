@@ -14,6 +14,7 @@ char *inputString()
 {
   char *randString = malloc(sizeof(char) * 6);
 
+  // generate string of only lowercase chars
   int i;
   for (i = 0; i < 5; i++) {
     randString[i] = (rand() % 26) + 97;
