@@ -57,17 +57,6 @@ int main() {
     G.discardCount[thisPlayer] = floor(rand() % MAX_DECK);
     G.handCount[thisPlayer] = floor(rand() % MAX_HAND);
 
-    // player 2
-    // G.deckCount[thisPlayer + 1] = floor(rand() % MAX_DECK);
-    // G.discardCount[thisPlayer + 1] = floor(rand() % MAX_DECK);
-    // G.handCount[thisPlayer + 1] = floor(rand() % MAX_HAND);
-
-    // set player hands
-    // for (i = 0; i < 5; i++) {
-    //   G.hand[thisPlayer][i] = floor(rand() % 26);
-    //   G.hand[thisPlayer + 1][i] = floor(rand() % 26);
-    // }
-
     G.whoseTurn = thisPlayer;
 
     memcpy(&testG, &G, sizeof(struct gameState));
