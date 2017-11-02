@@ -56,29 +56,55 @@ cardtest4: cardtest4.c dominion.o rngs.o interface.o
 
 unittestresults.out: unittest1 unittest2 unittest3 unittest4 cardtest1 cardtest2 cardtest3 cardtest4
 	./unittest1 &> unittestresults.out
-	gcov -b unittest1.c >> unittestresults.out
-	cat unittest1.c.gcov >> unittestresults.out
+	gcov -b dominion.c >> unittestresults.out
+	cat dominion.c.gcov >> unittestresults.out
 	./unittest2 >> unittestresults.out
-	gcov -b unittest2.c >> unittestresults.out
-	cat unittest2.c.gcov >> unittestresults.out
+	gcov -b dominion.c >> unittestresults.out
+	cat dominion.c.gcov >> unittestresults.out
 	./unittest3 >> unittestresults.out
-	gcov -b unittest3.c >> unittestresults.out
-	cat unittest3.c.gcov >> unittestresults.out
+	gcov -b dominion.c >> unittestresults.out
+	cat dominion.c.gcov >> unittestresults.out
 	./unittest4 >> unittestresults.out
-	gcov -b unittest4.c >> unittestresults.out
-	cat unittest4.c.gcov >> unittestresults.out
+	gcov -b dominion.c >> unittestresults.out
+	cat dominion.c.gcov >> unittestresults.out
 	./cardtest1 >> unittestresults.out
-	gcov -b cardtest1.c >> unittestresults.out
-	cat cardtest1.c.gcov >> unittestresults.out
+	gcov -b dominion.c >> unittestresults.out
+	cat dominion.c.gcov >> unittestresults.out
 	./cardtest2 >> unittestresults.out
-	gcov -b cardtest2.c >> unittestresults.out
-	cat cardtest2.c.gcov >> unittestresults.out
+	gcov -b dominion.c >> unittestresults.out
+	cat dominion.c.gcov >> unittestresults.out
 	./cardtest3 >> unittestresults.out
-	gcov -b cardtest3.c >> unittestresults.out
-	cat cardtest3.c.gcov >> unittestresults.out
+	gcov -b dominion.c >> unittestresults.out
+	cat dominion.c.gcov >> unittestresults.out
 	./cardtest4 >> unittestresults.out
-	gcov -b cardtest4.c >> unittestresults.out
-	cat cardtest4.c.gcov >> unittestresults.out
+	gcov -b dominion.c >> unittestresults.out
+	cat dominion.c.gcov >> unittestresults.out
+########
+
+########
+randomtestadventurerresult: randomtestadventurer
+	./randomtestadventurer &> randomtestadventurerresult.out
+	gcov -f -b dominion.c >> randomtestadventurerresult.out
+	cat dominion.c.gcov >> randomtestadventurerresult.out
+
+randomtestcard1result: randomtestcard1
+	./randomtestcard1 &> randomtestcard1result.out
+	gcov -f -b dominion.c >> randomtestcard1result.out
+	cat dominion.c.gcov >> randomtestcard1result.out
+
+randomtestcard2result: randomtestcard2
+	./randomtestcard2 &> randomtestcard2result.out
+	gcov -f -b dominion.c >> randomtestcard2result.out
+	cat dominion.c.gcov >> randomtestcard2result.out
+
+randomtestadventurer: randomtestadventurer.c dominion.o rngs.o interface.o
+	gcc -o randomtestadventurer -g randomtestadventurer.c dominion.o rngs.o interface.o $(CFLAGS)
+
+randomtestcard1: randomtestcard1.c dominion.o rngs.o interface.o
+	gcc -o randomtestcard1 -g randomtestcard1.c dominion.o rngs.o interface.o $(CFLAGS)
+
+randomtestcard2: randomtestcard2.c dominion.o rngs.o interface.o
+	gcc -o randomtestcard2 -g randomtestcard2.c dominion.o rngs.o interface.o $(CFLAGS)
 ########
 
 player: player.c interface.o
