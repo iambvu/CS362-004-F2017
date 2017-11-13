@@ -1,0 +1,8 @@
+Adventurer card:
+Does not return the correct number of cards in hand and deck after playing the adventurer card. -- run "make make unittestresults.out"
+
+Smithy card:
+Does not result in correct number of cards in hand and deck after playing the smithy card. -- run "make make unittestresults.out"
+
+Random Testing: Adventurer card
+Results in segmentation fault -- run "make randomtestadventurerresult"
