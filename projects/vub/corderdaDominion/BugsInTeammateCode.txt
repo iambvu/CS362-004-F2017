@@ -1,8 +1,18 @@
 Adventurer card:
 Does not return the correct number of cards in hand and deck after playing the adventurer card. -- run "make make unittestresults.out"
 
+After being played, the card does not correctly update the number of cards in hand and deck. The adventurer card is supposed to add two treasure cards to the player’s hand and discard all other cards that were drawn. Let’s suppose the player had 5 cards in hand, then plays the adventurer card and draws 2 cards. This would result in the player having 6 cards in hand because the adventurer card itself is discarded, and the deck would have two cards less. This is not the case. 
+
+
+
 Smithy card:
 Does not result in correct number of cards in hand and deck after playing the smithy card. -- run "make make unittestresults.out"
 
+There is also a bug for the smithy card. The card when played allows the player to draw three cards, but the actual result is one extra card. The problem is because the loop in the cardEffectSmithy() loops until “i < 5” rather than “i < 3”.
+
+
+
 Random Testing: Adventurer card
 Results in segmentation fault -- run "make randomtestadventurerresult"
+
+This is a randomization error. Sometimes the randomization produces a number that is out of bounds.
